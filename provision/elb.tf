@@ -17,14 +17,14 @@ resource "aws_elb" "webserver-lb" {
 
   health_check {
     healthy_threshold   = 2
-    unhealthy_threshold = 5
+    unhealthy_threshold = 2
     timeout             = 15
     target              = "HTTP:80/"
     interval            = 30
   }
 
   instances                   = [aws_instance.websrv-01.id, aws_instance.websrv-02.id]
-  cross_zone_load_balancing   = false
+  cross_zone_load_balancing   = true
   idle_timeout                = 400
   connection_draining         = true
   connection_draining_timeout = 400
