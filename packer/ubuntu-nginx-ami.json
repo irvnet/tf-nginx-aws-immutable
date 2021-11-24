@@ -31,13 +31,8 @@
 
   "provisioners": [
     {
-      "type": "file",
-      "source": "../config/index.html",
-      "destination": "/tmp/index.html"
-    },
-    {
       "type": "shell",
-      "script": "scripts/updates.sh"
+      "script": "../scripts/updates.sh"
     }
   ]
 

@@ -1,11 +1,5 @@
 #!/bin/bash
 
-echo 'prepping web server image... '
-sudo apt-get --yes update
-sudo apt-get --yes upgrade
-sudo apt-get --yes autoremove
-sudo apt-get --yes install unzip
-
 ## choose a random color for the page background
 array[0]="Tomato"
 array[1]="Orange"
@@ -20,9 +14,6 @@ index=$(($RANDOM % $size))
 HEADER_COLOR=${array[$index]}
 echo ">>> RANDOM COLOR IS: ${HEADER_COLOR} <<<"
 
-## install nginx
-sudo apt-get install nginx -y
-
 ## update index page with a random color
 sed -i "s/@COLOR@/${HEADER_COLOR}/" /tmp/index.html
 
@@ -32,9 +23,9 @@ sed -i "s/@IPADDR@/${IPADDR}/" /tmp/index.html
 
 ## backup/update index page 
 echo ">>> UPDATE INDEX PAGE <<<"
-sudo mv /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.bkp
-sudo mv /tmp/index.html /var/www/html/index.html
+mv /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.bkp
+mv /tmp/index.html /var/www/html/index.html
 
-## enable/start nginx
-sudo systemctl start nginx
-sudo systemctl status nginx
+## start nginx
+sudo service nginx start
+

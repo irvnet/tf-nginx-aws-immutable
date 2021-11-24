@@ -23,9 +23,20 @@ resource "aws_instance" "websrv-02" {
     private_key = file("keys/demo-1")
   }
 
+ provisioner "file" {
+    source      = "../config/index.html"
+    destination = "/tmp/index.html"
+  }
+
+ provisioner "file" {
+    source      = "../scripts/markup-home-page.sh"
+    destination = "/tmp/markup-home-page.sh"
+  }
+
   provisioner "remote-exec" {
     inline = [
-      "sudo service nginx start"
+      "chmod +x /tmp/markup-home-page.sh",
+      "sudo /tmp/markup-home-page.sh"
     ]
   }
 
