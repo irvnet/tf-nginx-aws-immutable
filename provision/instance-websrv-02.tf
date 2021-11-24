@@ -20,7 +20,7 @@ resource "aws_instance" "websrv-02" {
     type = "ssh"
     user = "ubuntu"
     host = self.public_ip
-    private_key = file("${path.module}/keys/demo-1")
+    private_key = file("keys/demo-1")
   }
 
   provisioner "remote-exec" {
