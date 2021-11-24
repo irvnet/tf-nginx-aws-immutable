@@ -29,3 +29,7 @@ override.tf.json
 # example: *tfplan*
 *.un~
 *.terraform.lock.hcl
+
+# ignore keys
+keys
+
