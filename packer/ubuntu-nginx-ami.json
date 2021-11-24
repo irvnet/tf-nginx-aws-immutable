@@ -31,20 +31,14 @@
 
   "provisioners": [
     {
-      "type": "shell",
-      "script": "scripts/updates.sh"
-    },
-    {
       "type": "file",
       "source": "../config/index.html",
       "destination": "/tmp/index.html"
     },
-    {  
-      "type":"shell",
-      "inline":[  
-         "sudo mv /tmp/index.html /var/www/html/index.html"
-      ]
-   }
+    {
+      "type": "shell",
+      "script": "scripts/updates.sh"
+    }
   ]
 
 
